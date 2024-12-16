@@ -1,0 +1,11 @@
+video_path = 'D:\OpenLoop\c.avi_short.mp4'; 
+obj = VideoReader(video_path);
+%numFrames = obj.NumberOfFrames;
+frame = read(obj, 1);
+imwrite(frame, [video_path '_1.png']);
+gray = frame(:,:,1);
+a = Shuffle(reshape(gray,1,[]));
+a = reshape(a,size(gray));
+frame_s3 = cat(3,a,a,a);
+%imshow(frame);
+imwrite(frame_s3, [video_path '.png']);
